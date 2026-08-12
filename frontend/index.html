@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Logistics Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js?v=2"></script>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">🚚</div>
+
+            <div>
+                <h2>LogiTrack</h2>
+                <span>Shipment Management</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#track">Track</a>
+            <a href="#create">Create</a>
+            <a href="#update">Update</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                LIVE SHIPMENT TRACKING
+            </div>
+
+            <h1>
+                Track your shipment
+                <span>with confidence.</span>
+            </h1>
+
+            <p>
+                Monitor shipment status, location and delivery
+                history from one simple dashboard.
+            </p>
+
+            <!-- TRACKING SEARCH -->
+
+            <div class="tracking-box" id="track">
+
+                <div class="tracking-input">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="trackingId"
+                        placeholder="Enter tracking ID e.g. TRK30001"
+                    >
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="trackShipment()">
+
+                    Track Shipment
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- ================= TRACKING RESULT ================= -->
+
+        <section class="section">
+
+            <div id="result"></div>
+
+        </section>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section class="section">
+
+            <div
+                id="historyResult"
+                class="history-card">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CREATE / UPDATE ================= -->
+
+        <div class="two-column">
+
+
+            <!-- CREATE SHIPMENT -->
+
+            <section
+                class="dashboard-card"
+                id="create">
+
+                <div class="card-header">
+
+                    <div class="card-icon create-icon">
+                        +
+                    </div>
+
+                    <div>
+                        <h2>Create Shipment</h2>
+
+                        <p>
+                            Register a new shipment
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Tracking ID</label>
+
+                    <input
+                        type="text"
+                        id="newTrackingId"
+                        placeholder="TRK30002">
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Current Location</label>
+
+                        <input
+                            type="text"
+                            id="newLocation"
+                            placeholder="Tumkur">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Destination</label>
+
+                        <input
+                            type="text"
+                            id="newDestination"
+                            placeholder="Delhi">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="newStatus">
+
+                        <option value="CREATED">
+                            CREATED
+                        </option>
+
+                        <option value="IN_TRANSIT">
+                            IN_TRANSIT
+                        </option>
+
+                        <option value="OUT_FOR_DELIVERY">
+                            OUT_FOR_DELIVERY
+                        </option>
+
+                        <option value="DELIVERED">
+                            DELIVERED
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="createShipment()">
+
+                    Create Shipment
+                </button>
+
+
+                <div
+                    id="createResult"
+                    class="form-result">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- UPDATE SHIPMENT -->
+
+            <section
+                class="dashboard-card"
+                id="update">
+
+                <div class="card-header">
+
+                    <div class="card-icon update-icon">
+                        ↻
+                    </div>
+
+                    <div>
+
+                        <h2>Update Shipment</h2>
+
+                        <p>
+                            Update current shipment status
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Tracking ID</label>
+
+                    <input
+                        type="text"
+                        id="updateTrackingId"
+                        placeholder="TRK30001">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>New Location</label>
+
+                    <input
+                        type="text"
+                        id="updateLocation"
+                        placeholder="Bangalore">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="updateStatus">
+
+                        <option value="CREATED">
+                            CREATED
+                        </option>
+
+                        <option value="IN_TRANSIT">
+                            IN_TRANSIT
+                        </option>
+
+                        <option value="OUT_FOR_DELIVERY">
+                            OUT_FOR_DELIVERY
+                        </option>
+
+                        <option value="DELIVERED">
+                            DELIVERED
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="updateShipment()">
+
+                    Update Shipment
+                </button>
+
+
+                <div
+                    id="updateResult"
+                    class="form-result">
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="features">
+
+            <div class="section-title">
+
+                <span>PLATFORM FEATURES</span>
+
+                <h2>
+                    Everything you need to manage shipments
+                </h2>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>Fast Tracking</h3>
+
+                    <p>
+                        Quickly retrieve shipment information
+                        using a unique tracking ID.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📍
+                    </div>
+
+                    <h3>Live Location</h3>
+
+                    <p>
+                        Keep track of the current shipment
+                        location and destination.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🕒
+                    </div>
+
+                    <h3>Shipment History</h3>
+
+                    <p>
+                        View every shipment status update
+                        through a detailed timeline.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🚀
+                    </div>
+
+                    <h3>Redis Powered</h3>
+
+                    <p>
+                        Frequently requested shipments are
+                        served quickly using Redis caching.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+
+            <!-- LOGITRACK -->
+
+            <div class="footer-column footer-brand">
+
+                <div class="footer-logo">
+                    🚚 LogiTrack
+                </div>
+
+                <p>
+                    Modern shipment tracking and management
+                    powered by Spring Boot, PostgreSQL,
+                    Redis and Docker.
+                </p>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h3>Contact</h3>
+
+                <p class="footer-name">
+                    👩‍💻 Monika M
+                </p>
+
+                <button
+                    class="contact-copy"
+                    onclick="copyEmail()"
+                    title="Click to copy email">
+
+                    📧
+                    <span>
+                        monikamurthy080506@gmail.com
+                    </span>
+
+                </button>
+
+
+                <a
+                    href="tel:+919449186369"
+                    class="contact-link">
+
+                    📞
+                    <span>
+                        +91 9449186369
+                    </span>
+
+                </a>
+
+
+                <span
+                    id="copyMessage"
+                    class="copy-message">
+                </span>
+
+            </div>
+
+
+            <!-- HELP CENTER -->
+
+            <div class="footer-column">
+
+                <h3>Help Center</h3>
+
+                <a href="#track">
+                    🔍 Track a Shipment
+                </a>
+
+                <a href="#create">
+                    📦 Create Shipment
+                </a>
+
+                <a href="#update">
+                    🔄 Update Shipment
+                </a>
+
+                <a
+                    href="mailto:monikamurthy080506@gmail.com">
+
+                    🆘 Contact Support
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 LogiTrack. All rights reserved.
+            </span>
+
+            <span>
+                Built with ❤️ using Spring Boot,
+                PostgreSQL, Redis & Docker
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
