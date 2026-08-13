@@ -90,11 +90,13 @@ public class ShipmentService {
 
     } catch (Exception e) {
 
-        throw new RuntimeException(
-                "Error while accessing Redis",
-                e
-        );
-    }
+    e.printStackTrace();
+
+    throw new RuntimeException(
+            "Error while accessing Redis",
+            e
+    );
+}
 }
 
     // =========================================================
