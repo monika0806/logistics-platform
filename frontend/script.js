@@ -6,7 +6,7 @@ async function trackShipment() {
     console.log("Tracking ID:", trackingId);
 
     const response = await fetch(
-        `http://localhost:8080/api/shipments/${trackingId}`
+        `https://logistics-platform-pt2p.onrender.com/api/shipments/${trackingId}`
     );
 
     const shipment = await response.json();
@@ -62,7 +62,7 @@ async function createShipment() {
     };
 
     const response = await fetch(
-        "http://localhost:8080/api/shipments",
+        "https://logistics-platform-pt2p.onrender.com/api/shipments",
         {
             method: "POST",
 
@@ -96,7 +96,7 @@ async function getShipmentHistory() {
     try {
 
         const response = await fetch(
-            `http://localhost:8080/api/shipments/${trackingId}/history`
+            `https://logistics-platform-pt2p.onrender.com/api/shipments/${trackingId}/history`
         );
 
         if (!response.ok) {
@@ -175,7 +175,7 @@ async function updateShipment() {
     try {
 
         const response = await fetch(
-            `http://localhost:8080/api/shipments/${trackingId}`,
+            `https://logistics-platform-pt2p.onrender.com/api/shipments/${trackingId}`,
             {
                 method: "PUT",
 
